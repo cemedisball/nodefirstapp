@@ -28,10 +28,13 @@ app.post('/api/users', (req, res) => {
 });
 
 app.delete('/users/:id', (req, res) => {
+    const deletedIndex = users.findIndex(user => user.id === Number(req.params.id));
+    res.send(`Delete user '${users[deletedIndex].username}' completed.`);
+});
 
-    const deletedIndex = users.findIndex(user => user.id === Number(req.params.id)) 
- 
-    res.send(`Delete user '${users[deletedIndex].username}' completed.`)
+app.put('/api/users/:id', (req, res) => {
+    const updateIndex = users.findIndex(user => user.id ===Number(req.params.id)) 
+     res.send(`Update user id: '${users[updateIndex].id}' completed.`)
  
  })
 
